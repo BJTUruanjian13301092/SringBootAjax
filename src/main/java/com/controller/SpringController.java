@@ -5,11 +5,14 @@ import com.entity.User;
 import com.util.MyFileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 
 /**
  * Created by User on 2017/3/29.
@@ -17,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/test")
-public class SpringController {
+public class SpringController extends BaseController {
 
     @Autowired
     TestEntityDao testEntityDao;
@@ -94,5 +97,11 @@ public class SpringController {
         }
 
         return "uploadimg success!!" + filePath;
+    }
+
+    @RequestMapping(value = "/testdownload")
+    public ResponseEntity<FileSystemResource> listExport(String proNo) {
+        File file = new File("D:\\workingFiles\\test.txt");
+        return export(file);
     }
 }
