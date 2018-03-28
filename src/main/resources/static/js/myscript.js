@@ -19,6 +19,7 @@ var viewmodel = avalon.define({
             url: "/hello/data",    //向springboot请求数据的url
             data: {},
             success: function (data) {
+                alert(data);
                 $('button').removeClass("btn-primary").addClass("btn-success").attr('disabled', true);
 
                 viewmodel.datalist = data;
@@ -69,7 +70,7 @@ var viewmodel = avalon.define({
             type: "post",
             url: "/hello/json",    //向springboot请求数据的url
             data: '{"userName":"Larry","pwd":"13301092"}',
-            dataType:"json",
+            dataType:"text",
             contentType:"application/json",
 
             success: function (msg) {

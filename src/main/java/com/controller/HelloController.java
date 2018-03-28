@@ -69,6 +69,7 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/json", method = RequestMethod.POST)
+    @ResponseBody
     public String showJson(@RequestBody Person person) {
 
         System.out.println("AAAAA: " + person.getUserName() + person.getPwd());
