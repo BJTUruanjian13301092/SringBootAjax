@@ -52,6 +52,11 @@ public class SpringController extends BaseController {
         str = toHex(bytes);
         System.out.println("MD5 = " + str);
 
+        MessageDigest messageDigest2 = MessageDigest.getInstance("SHA-256");
+        byte[] bytes2 = messageDigest2.digest(str.getBytes("utf-8"));
+        String str2 = byte2Hex(bytes2);
+        System.out.println("SHA-256 = " + str2);
+
         //List<TestEntity> list = testEntityDao.findAll();
         ModelAndView mav = new ModelAndView("Success");
         mav.getModel().put("name", name);
@@ -130,7 +135,7 @@ public class SpringController extends BaseController {
             return "This is not a image";
         }
 
-        httpService.inputStreamUpload(file.getInputStream(), fileName);
+        //httpService.inputStreamUpload(file.getInputStream(), fileName);
 
         //String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
         String filePath = "C:\\Users\\Administrator\\Desktop\\vue-manage-system-master\\static\\uploadimg\\";
